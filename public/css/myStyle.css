@@ -1,0 +1,11 @@
+.my-header{
+    background-color: grey;
+    /*position: fixed;*/
+    /*width: 100%;*/
+    /*height: 15%;*/
+    /*display: inline-block;*/
+}
+.button-reg{
+    position: relative;
+    left: 20%;
+}

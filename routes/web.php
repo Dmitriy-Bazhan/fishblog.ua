@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('commit.loyout');
-});
+Route::get('/', 'Loyout@main');
+
+Route::post('autorize','Loyout@loginInSite');
