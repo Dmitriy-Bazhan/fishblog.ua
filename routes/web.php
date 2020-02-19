@@ -14,3 +14,10 @@
 Route::get('/', 'Loyout@main');
 
 Route::post('autorize','Loyout@loginInSite');
+
+Route::post('ajaxLoginPost','Loyout@ajaxLoginPost');
+
+
+//Route::post('ajax_login_post',function(){
+//    var_dump($request);
+//});

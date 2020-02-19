@@ -32,4 +32,9 @@ class Loyout extends Controller
          echo 'WE IN FUNCTION <br>';
          var_dump($request->post());
     }
+    public function ajaxLoginPost(Request $request)
+    {
+        dd($request->all());
+
+    }
 }
