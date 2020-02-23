@@ -3,16 +3,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Document</title>
-    <link href="{{ asset('css/app.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('css/myStyle.css')}}" rel="stylesheet" type="text/css"/>
+    <title>Fish_Blog</title>
+    <link href="{{ asset($loyoutParam['css_app']) }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset($loyoutParam['css_bootstrap']) }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset($loyoutParam['css_myStyle']) }}" rel="stylesheet" type="text/css"/>
     <style>
         body {
-        background-image: url("{{ asset('image/Lake01.jpg') }}");
-        background-attachment: fixed;
-        background-size: cover;
-
+            background-image: url("{{ asset($loyoutParam['background_image']) }} ");
+            background-attachment: fixed;
+            background-size: cover;
         }
     </style>
 </head>
@@ -30,11 +29,11 @@
                 <form class="form-inline my-2 my-lg-0" action="autorize" method="POST" id="form_of_login">
                     {{ csrf_field() }}
                     <input name="login" type="text" placeholder="Логин" class="form-control mr-sm-2"
-                           value="<?php if(!empty($_POST['login'])) : ?><?= $_POST['login']; ?> <?php endif; ?>">
+                           value="{{ old('login') }}">
                     <input name="password" type="password" placeholder="Пароль" class="form-control mr-sm-2"
                            value="{{ old('password') }}">
                     <button id="push_to_login" type="submit" class="btn btn-primary">Войти</button>
-                    <a class="btn btn-danger button-reg" href="registaration">Регистрация</a>
+                    <a class="btn btn-danger button-reg" href="registration">Регистрация</a>
                 </form>
                 <?php endif; ?>
                 <?php if(session('role') == 'user') : ?>
@@ -61,19 +60,16 @@
 @if (session('user_not_exists') == 'yep')
     <p style="color:red;">This login not exists or incorrect password</p>
 @endif
-@if(count($errors) > 0)
-    <div>
-        @foreach ($errors->all() as $value)
-            <p style="color:red;"> {{  $value }}  </p>
-        @endforeach
-    </div>
-@endif
 
+@include('common.show_errors')
 
-<script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/jquery-3.4.1.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/popper.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/my_js/my_jquery_script.js') }}" type="text/javascript"></script>
+@yield('mainpage')
+
+<script src="{{ asset($loyoutParam['js_app']) }}" type="text/javascript"></script>
+<script src="{{ asset($loyoutParam['js_bootstrap']) }}" type="text/javascript"></script>
+<script src="{{ asset($loyoutParam['js_jquery']) }}" type="text/javascript"></script>
+<script src="{{ asset($loyoutParam['js_popper']) }}" type="text/javascript"></script>
+<script src="{{ asset($loyoutParam['my_jquery_script']) }}" type="text/javascript"></script>
+
 </body>
 </html>

@@ -9,3 +9,24 @@
     position: relative;
     left: 20%;
 }
+#reg_menu_main_div{
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    width: 20%;
+    height: 20%;
+}
+.label_color{
+    color: #e0ff5e;
+}
+.back_button{
+    position: absolute;
+    left: 85%;
+    top: 85%;
+}
+.errors_letters{
+    color: red;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 16pt;
+}

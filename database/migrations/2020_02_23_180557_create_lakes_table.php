@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateLakesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('lakes', function (Blueprint $table) {
             $table->increments('id')->autoIncrement();
-            $table->string('login', 50);
-            $table->string('password', 50);
-            $table->string('email', 150);
-            $table->enum('role',['user','admin'])->default('user');
-            $table->string('profile_foto', 150)->nullable()->default(NULL);
-            $table->enum('ban',['ban','not_ban'])->default('not_ban');
+            $table->string('name_lake', 50);
+            $table->text('description');
+            $table->string('foto_lake')->nullable();
         });
     }
 
@@ -34,6 +31,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('lakes');
     }
 }
