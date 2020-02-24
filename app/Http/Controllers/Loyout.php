@@ -22,6 +22,9 @@ class Loyout extends Controller
         if (!session()->has('user_not_exists')) {
             session()->put('user_not_exists', 'he exists');
         }
+
+
+
         $loyoutParam = [
             'background_image' => 'image/Lake01.jpg',
             'css_app' => 'css/app.css',
@@ -101,10 +104,11 @@ class Loyout extends Controller
             'password' => 'required|string|alpha_dash|max:50'];
 
         $check = \Validator::make($request->post(), $rules);
+
         if ($check->fails()) {
             return redirect('/')->withInput($request->flashOnly('login'))->withErrors($check);
         } else {
-            $user = users::where([['login', $request->post()['login']], ['password', $request->post()['password']]])->get();
+            $user = users::where([['login', $request->post()['login']],['password', md5($request->post()['password'])]])->get();
 
             //В нашей таблице есть поля: ['id','login','password','email','role','ban','profile_foto'];
 

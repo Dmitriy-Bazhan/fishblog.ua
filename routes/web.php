@@ -25,6 +25,14 @@ Route::get('registration' , 'Registration@main');
 Route::post('registration_form', 'Registration@we_got_forms');
 
 
+#вернуться на главную из регистрации
+Route::get('Back_to_mainpage',function(){
+    session()->forget('this_errors');
+    session()->forget('different_passwords');
+    session()->forget('login_exists');
+    session()->forget('email_exists');
+    return redirect('/');
+});
 
 
 //Route::post('ajaxLoginPost','Loyout@ajaxLoginPost');  Тренировка Ajax;

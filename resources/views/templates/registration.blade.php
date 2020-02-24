@@ -17,28 +17,33 @@
     </style>
 </head>
 <body>
-
 @include('common.show_errors')
+
+@if(!empty($reg_param['errors']))
+    @foreach($reg_param['errors'] as $value)
+        <p class="errors_letters">{{ $value }}</p>
+    @endforeach
+@endif
 
 <div id="reg_menu_main_div">
     <form action="registration_form" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
-            <label for="inputLogin" class="label_color">Login</label>
+            <label for="inputLogin" class="label_color">Логин</label>
             <input type="text" class="form-control" id="inputLogin" name="login" value="{{ old('login') }}">
         </div>
         <div class="form-group">
-            <label for="inputPassword" class="label_color">Password</label>
+            <label for="inputPassword" class="label_color">Пароль</label>
             <input type="password" class="form-control" id="inputPassword" name="password"
                    value="{{ old('password') }}">
         </div>
         <div class="form-group">
-            <label for="inputPassword2" class="label_color">Password again</label>
+            <label for="inputPassword2" class="label_color">Повторите пароль</label>
             <input type="password" class="form-control" id="inputPassword2" name="password2"
                    value="{{ old('password2') }}">
         </div>
         <div class="form-group">
-            <label for="inputEmail" class="label_color">Email</label>
+            <label for="inputEmail" class="label_color">Почта</label>
             <input type="email" class="form-control" id="inputemail" name="email"
                    value="{{ old('email') }}">
         </div>
@@ -47,7 +52,7 @@
     </form>
 </div>
 
-<a class="btn btn-danger back_button" href="/">На главную</a>
+<a class="btn btn-danger back_button" href="Back_to_mainpage">На главную</a>
 
 <script src="{{ asset($reg_param['js_app']) }}" type="text/javascript"></script>
 <script src="{{ asset($reg_param['js_bootstrap']) }}" type="text/javascript"></script>
